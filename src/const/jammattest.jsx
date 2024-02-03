@@ -35,8 +35,8 @@ const Data = [
         img: "/images/slid1.jpeg",
         info: [
             {
-                position: 'اہل حدیث یوتھ فورس ',
-                name:" پاکستان",
+                position: 'سینیٹر پروفیسر علامہ ساجد میر',
+                name:" امیر مرکزی جمعیت اہلحدیث پاکستان",
             
             },
 
