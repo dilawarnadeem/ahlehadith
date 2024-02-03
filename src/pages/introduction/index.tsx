@@ -27,10 +27,10 @@ const Introduction = () => {
                 <div className=" bg-[#012f1e] text-white py-5 px-3">
                   <div >
                     <h6 className='mb-3 text-xl font-ahle'>
-                      اہل حدیث یوتھ فورس
-                    </h6>
+                      سینیٹر پروفیسر علامہ ساجد میر                    </h6>
                     <h4 className='mb-3 text-2xl font-ahle'>
-                      پاکستان
+
+                      امیر مرکزی جمعیت اہلحدیث پاکستان
                     </h4>
                   </div>
                 </div>
