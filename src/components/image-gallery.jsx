@@ -3,8 +3,6 @@ import { useState } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import ModelBox from "@/components/modelbox";
 import Image from "next/image";
-
-
 const Gallery_images = ({picturesData}) => {
   const columnsCountBreakPoints = { 200: 1, 280: 2, 900: 3 };
   const [modalIsOpen, setIsOpen] = useState(false);
