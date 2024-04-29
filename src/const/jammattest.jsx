@@ -28,8 +28,7 @@ const Data = [
             },
             {
                 para: '  اہلحدیث متحدہ حکماء محاذ',
-            },
-            
+            },            
             
         ],
         img: "/images/slid1.jpeg",
