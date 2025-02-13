@@ -20,7 +20,7 @@ export default function Home({ postData, dailyHadees, dailyQuran, dailyQoute, vi
   const posts = postData
   return (
     <>
-       <SeoMeta title="مرکزی جمعیت " description="مرکزی جمعیت اہل حدیث پاکستان اہل حدیث کی نمائندہ مذہبی و سیاسی جماعت ہے" url="" />
+       <SeoMeta title="مرکزی جمعیت" description="مرکزی جمعیت اہل حدیث پاکستان اہل حدیث کی نمائندہ مذہبی و سیاسی جماعت ہے" url="" />
     
       <Main1 />
       <Sub_Nav />
