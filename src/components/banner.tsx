@@ -9,6 +9,8 @@ interface IPageBanner {
   buttontext?: string;
   buttonLink?: string | number | any;
   rounded?: boolean;
+  full? : boolean;
+  className?: string
 }
 
 const PageBanner = ({
@@ -17,12 +19,14 @@ const PageBanner = ({
   image,
   buttontext,
   buttonLink,
-  rounded
+  rounded,
+  full,
+  className
 }: IPageBanner) => {
   return (
     <>
       <div
-        className={`h-[360px] mt-[112px] bg-cover bg-no-repeat bg-center relative ${rounded && 'container mt-40 px-4 md:px-10 mx-auto rounded-[60px]'}`}
+        className={`${full ? "h-[84vh]" : "h-[360px]"} mt-[112px] bg-cover bg-no-repeat bg-center relative ${rounded && 'container mt-40 px-4 md:px-10 mx-auto rounded-[60px]'} ${className}`}
         style={{ backgroundImage: `url(${image})` }}
       >
         <div className={` absolute top-0 p-4 flex flex-col justify-center text-white items-center right-0 bottom-0 left-0 bg-black/30 ${rounded && 'container px-4 md:px-10 mx-auto rounded-[60px]'}`}>
