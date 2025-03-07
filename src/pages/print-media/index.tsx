@@ -11,7 +11,6 @@ export default function Print_Media({ picturesData }: any) {
   return (
     <>
       <SeoMeta title="پرنٹ میڈیا کوریج" description="مرکزی جمعیت اہل حدیث پاکستان اہل حدیث کی نمائندہ مذہبی و سیاسی جماعت ہے" url="print-media" />
-
       <main>
         <PageBanner
           title="پرنٹ میڈیا کوریج"
