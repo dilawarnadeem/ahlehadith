@@ -10,7 +10,7 @@ const BooksSection = ({ booksData }: any) => {
                 return (
                     <div key={idx} className='h-[450px] relative before:content-[" "] before:absolute before:top-3 before:bottom-3 before:left-3 before:right-3 before:border-white before:border group'>
                         <div className='h-full w-full '>
-                            <Image src={item?.node?.featuredImage?.node?.mediaItemUrl}
+                            <img src={item?.node?.featuredImage?.node?.mediaItemUrl}
                                 alt='image'
                                 height={300}
                                 width={300}

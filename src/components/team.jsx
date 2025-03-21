@@ -55,7 +55,7 @@ const Team = ({membersData}) => {
                            <div className='px-3' key={item.img}>
                             <div  className='h-[590px] relative before:content-[" "] before:absolute before:top-3 before:bottom-3 before:left-3 before:right-3 before:border-white before:border group'>
                             <div className='h-full w-full '>
-                                <Image src={item?.featuredImage?.node?.mediaItemUrl}
+                                <img src={item?.featuredImage?.node?.mediaItemUrl}
                                     alt='image'
                                     height={300}
                                     width={300}

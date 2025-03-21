@@ -12,7 +12,6 @@ import apolloClient from '../config/client';
 import { AllPosts, Books, Members, UpdatesByCategoryHadees, UpdatesByCategoryQoute, UpdatesByCategoryQuran, Videos } from '@/config/queries';
 import { GetServerSideProps } from "next";
 
-import Image from 'next/image'
 import SeoMeta from "@/components/seo";
 
 export default function Home({ postData, dailyHadees, dailyQuran, dailyQoute, videosData, booksData, membersData }: any) {
@@ -37,7 +36,7 @@ export default function Home({ postData, dailyHadees, dailyQuran, dailyQoute, vi
                 return (
                   <div key={idx} className="relative h-[540px] w-full bg-black">
                     <Link href={`/blogs/${item.databaseId}`}>
-                      <Image
+                      <img
                         src={item?.featuredImage?.node?.mediaItemUrl}
                         alt="thumbnil"
                         width={400}
@@ -70,7 +69,7 @@ export default function Home({ postData, dailyHadees, dailyQuran, dailyQoute, vi
                       <figure
                         className={`overflow-hidden relative md:w-full h-full`}
                       >
-                        <Image
+                        <img
                           src={item?.featuredImage?.node?.mediaItemUrl}
                           alt=""
                           width={400}
@@ -111,7 +110,7 @@ export default function Home({ postData, dailyHadees, dailyQuran, dailyQoute, vi
           <div className="grid md:grid-cols-3 grid-cols-1 gap-5 ">
             <div className=" border border-light-gray">
               <div className="bg-[#012f1e] p-5 flex gap-3 items-center">
-                <Image src="/images/iqra-icon.png" alt="iqra-icon.png" width={50} height={50} />
+                <img src="/images/iqra-icon.png" alt="iqra-icon.png" width={50} height={50} />
                 <h2 className="text-3xl leading-[4rem] uppercase font-ahle text-white">
                   روزانہ قرآن
                 </h2>
@@ -129,7 +128,7 @@ export default function Home({ postData, dailyHadees, dailyQuran, dailyQoute, vi
             </div>
             <div className=" border border-light-gray">
               <div className="bg-[#012f1e] p-5 flex gap-3 items-center">
-                <Image src="/images/iqra-icon.png" alt="iqra-icon.png" width={50} height={50} />
+                <img src="/images/iqra-icon.png" alt="iqra-icon.png" width={50} height={50} />
                 <h2 className="text-3xl leading-[4rem] uppercase font-ahle text-white">
                   روزانہ کی حدیث
                 </h2>
@@ -144,7 +143,7 @@ export default function Home({ postData, dailyHadees, dailyQuran, dailyQoute, vi
             </div>
             <div className=" border border-light-gray">
               <div className="bg-[#012f1e] p-5 flex gap-3 items-center">
-                <Image src="/images/iqra-icon.png" alt="iqra-icon.png" width={50} height={50} />
+                <img src="/images/iqra-icon.png" alt="iqra-icon.png" width={50} height={50} />
                 <h2 className="text-3xl leading-[4rem] uppercase font-ahle text-white">
                   اقوالِ سلف
                 </h2>

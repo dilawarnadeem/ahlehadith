@@ -23,3 +23,15 @@ export const getIDFromURL = (url) =>{
      }
      return id
 }
+
+
+export function getYouTubeThumbnail(url) {
+     const regex = /(?:youtu\.be\/|youtube\.com\/(?:.*v=|.*\/|.*embed\/|.*shorts\/))([^?&]+)/;
+     const match = url.match(regex);
+     
+     if (match && match[1]) {
+         return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
+     } else {
+         return "Invalid YouTube URL";
+     }
+ }
