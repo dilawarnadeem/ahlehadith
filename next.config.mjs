@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images:{
-    domains:['ant.a59.mywebsitetransfer.com', 'http://ant.a59.mywebsitetransfer.com/ahlehadith','i.ytimg.com','youtube.com','youtu.be']
+    domains:['ant.a59.mywebsitetransfer.com', 'zamzamwelfaretrust.com','i.ytimg.com','youtube.com','youtu.be']
   },
 };
 
