@@ -35,7 +35,7 @@ export const AllPosts = gql`
 export const UpdatesByCategoryHadees = gql`
   query UpdatesByCategory {
     updateType(id: "daily-hadees", idType: SLUG) {
-      updates(first: 1, where: { orderby: { field: DATE, order: ASC } }) {
+      updates(first: 1, where: { orderby: { field: DATE, order: DESC } }) {
         nodes {
           title
           dailyUpdatesInfo {
@@ -51,7 +51,7 @@ export const UpdatesByCategoryHadees = gql`
 export const UpdatesByCategoryQuran = gql`
   query UpdatesByCategory {
     updateType(id: "daily-quran", idType: SLUG) {
-      updates(first: 1, where: { orderby: { field: DATE, order: ASC } }) {
+      updates(first: 1, where: { orderby: { field: DATE, order: DESC } }) {
         nodes {
           title
           dailyUpdatesInfo {
@@ -67,7 +67,7 @@ export const UpdatesByCategoryQuran = gql`
 export const UpdatesByCategoryQoute = gql`
   query UpdatesByCategory {
     updateType(id: "daily-qoute", idType: SLUG) {
-      updates(first: 1, where: { orderby: { field: DATE, order: ASC } }) {
+      updates(first: 1, where: { orderby: { field: DATE, order: DESC } }) {
         nodes {
           title
           dailyUpdatesInfo {
