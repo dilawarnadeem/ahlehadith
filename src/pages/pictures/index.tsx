@@ -40,7 +40,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     apolloClient.query({
       query: PictureData,
       variables: {
-        id: "صدر-آزاد-جموں-کشمیر-سردار-مسعود-خاں",
+        id: "masood-khan",
       }
     }),
   ]);
