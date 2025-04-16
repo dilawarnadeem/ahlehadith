@@ -23,7 +23,7 @@ export default function Pictures({ picturesData }: any) {
         <section className='container px-4 md:px-10 mx-auto'>
           <div className="my-20">
             <h2 className="text-2xl font-ahle capitalize">
-            تصاویر
+                تصاویر
             </h2>
             <Gallery_images picturesData={picturesData} />
           </div>

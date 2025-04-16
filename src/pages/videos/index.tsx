@@ -4,6 +4,7 @@ import SeoMeta from "@/components/seo";
 import apolloClient from "../../config/client";
 import { VideoType, Videos as VideoQ } from "@/config/queries";
 import React from "react";
+import { VideosGallery } from "@/components/videos";
 
 export default function Videos({ videosData, videoTypeData }: any) {
 
@@ -28,7 +29,7 @@ export default function Videos({ videosData, videoTypeData }: any) {
                       {item?.name}
                     </h2>
                   </div>
-                  {/* <VideosGallery type={item?.name} videosData={videosData} /> */}
+                  <VideosGallery type={item?.name} videosData={videosData} />
                 </div>
               </div>
             );
