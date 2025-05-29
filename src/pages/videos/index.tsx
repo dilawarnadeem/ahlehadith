@@ -26,10 +26,10 @@ export default function Videos({ videosData, videoTypeData }: any) {
                 <div>
                   <div className="my-5">
                     <h2 className="text-2xl uppercase font-ahle">
-                      {item?.name}
+                      {item?.name}                   
                     </h2>
                   </div>
-                  <VideosGallery type={item?.name} videosData={videosData} />
+                  <VideosGallery type={item?.slug} videosData={videosData} />
                 </div>
               </div>
             );

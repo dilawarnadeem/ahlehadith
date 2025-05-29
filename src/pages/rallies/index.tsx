@@ -54,7 +54,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     apolloClient.query({
       query: VideoByTypes,
       variables: {
-        id: "ریلیاں"
+        id: "rallies"
       }
     }),
   ]);
