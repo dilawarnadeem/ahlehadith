@@ -2,11 +2,11 @@ import { GetServerSideProps } from "next";
 import PageBanner from "../../components/banner";
 import SeoMeta from "@/components/seo";
 import apolloClient from "../../config/client";
-import { VideoType, Videos as VideoQ } from "@/config/queries";
+import { videosTypes } from "@/config/queries";
 import React from "react";
 import { VideosGallery } from "@/components/videos";
 
-export default function Videos({ videosData, videoTypeData }: any) {
+export default function Videos({  videoTypeData }: any) {
 
   return (
     <>
@@ -29,7 +29,7 @@ export default function Videos({ videosData, videoTypeData }: any) {
                       {item?.name}                   
                     </h2>
                   </div>
-                  <VideosGallery type={item?.slug} videosData={videosData} />
+                  <VideosGallery videosData={item?.videos.nodes} />
                 </div>
               </div>
             );
@@ -43,17 +43,11 @@ export default function Videos({ videosData, videoTypeData }: any) {
 
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const [videos, videoType] = await Promise.all([
-    apolloClient.query({ query: VideoQ }),
-    apolloClient.query({ query: VideoType }),
-  ]);
-  const videosData = videos?.data?.videos?.nodes;
-  const videoTypeData = videoType?.data?.videoTypes?.nodes;
+  const { data } = await apolloClient.query({
+    query: videosTypes,
+  });
 
-  if (!videos) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
-  }
+  const videoTypeData = data?.videoTypes?.nodes || [];
 
-  return { props: { videosData, videoTypeData } };
-}
+  return { props: { videoTypeData } };
+};

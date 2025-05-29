@@ -169,6 +169,35 @@ export const VideoType = gql`
   }
 `;
 
+
+export const VideoByTypes = gql`
+query Videos {
+  videoTypes {
+    nodes {
+      name
+      videos {       
+        nodes {
+        title
+          videoInfo {
+            videoUrl
+          }
+        }
+      }
+    }
+  }
+}
+  `;
+
+
+
+
+
+
+
+
+
+
+
 export const PictureData = gql`
   query PictureData($id: ID!) {
     picture(id: $id, idType: SLUG) {
@@ -183,18 +212,22 @@ export const PictureData = gql`
   }
 `;
 
-export const VideoByTypes = gql`
-  query videoType($id: ID = "") {
-    videoType(id: $id, idType: SLUG) {
-      videos(first: 100) {
+export const videosTypes = gql`
+query videosTypes {
+  videoTypes {
+    nodes {
+      name
+      videos {
         nodes {
-          videoInfo {
+           videoInfo {
             videoUrl
           }
+          title
         }
       }
     }
   }
+}
 `;
 
 export const singlePost = gql`
