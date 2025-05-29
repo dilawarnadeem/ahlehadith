@@ -1,13 +1,24 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 import YouTube, { YouTubeProps } from 'react-youtube';
-import { VideoByTypes } from '@/config/queries';
-import { getIDFromURL } from '@/utils';
+import { VideoByType, VideoByTypes } from '@/config/queries';
+import { getIDFromURL, getYouTubeThumbnail } from '@/utils';
 import PageBanner from '../../components/banner';
 import apolloClient from '@/config/client';
 import { GetServerSideProps } from 'next';
 import SeoMeta from "@/components/seo";
+import { BsPlayCircle } from 'react-icons/bs';
+import ModelBox from '@/components/modelbox';
 export default function tanzeemiijlas({ videosList }: any) {
+  const [modalIsOpen, setIsOpen] = useState(false);
+  
+    const [URL, setURL] = useState("");
+    const OpenModelBox = (video: any) => {
+      const vURL = video?.videoInfo?.videoUrl;
+      setURL(vURL);
+      setIsOpen(true);
+    };
+  
   const onPlayerReady: YouTubeProps['onReady'] = (event: any) => {
     event.target.pauseVideo();
   }
@@ -27,20 +38,42 @@ export default function tanzeemiijlas({ videosList }: any) {
           buttontext=""
           buttonLink=""
         />
-        <section className='container px-4 md:px-10 mx-auto'>
-          <div className='items-center font-ahle my-10 md:my-20 md:mt-20 grid gap-10'>
+        <section className="container px-4 md:px-10 mx-auto">
+          <div className="items-center font-ahle my-10 md:my-20 md:mt-20 grid gap-10">
             <div className="my-10 grid md:grid-cols-3 grid-cols-1 gap-7">
               {videosList?.map((item: any, idx: number) => {
-                return <YouTube key={idx}
-                  videoId={getIDFromURL(item?.videoInfo?.videoUrl)}
-                  opts={opts}
-                  className={`videocontainer`}
-                  iframeClassName={`w-full h-full aspect-square`}
-                  onReady={onPlayerReady} />
+                return (
+                  <>
+                    <div
+                      key={idx}
+                      className="rounded-xl relative md:rounded-xl  border-[6px] border-white dark:border-transparent shadow-xl overflow-hidden inline-block"
+                    >
+                      <img
+                        src={getYouTubeThumbnail(item?.videoInfo?.videoUrl)}
+                        alt="thumbnil"
+                        width={360}
+                        height={360}
+                        className="w-full h-full object-cover"
+                      />
+                      <BsPlayCircle
+                        onClick={() => OpenModelBox(item)}
+                        className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 text-yellow active:scale-105 animate-pulse text-5xl"
+                      />
+                    </div>
+                  </>
+                );
               })}
             </div>
           </div>
         </section>
+        {modalIsOpen && (
+          <ModelBox
+            modalIsOpen={modalIsOpen}
+            setIsOpen={setIsOpen}
+            URL={URL}
+            video={true}
+          />
+        )}
       </main>
     </>
   );
@@ -48,20 +81,19 @@ export default function tanzeemiijlas({ videosList }: any) {
 
 
 
+
 export const getServerSideProps: GetServerSideProps = async () => {
-  const [postres] = await Promise.all([
-    apolloClient.query({
-      query: VideoByTypes,
-      variables: {
-        id: "تنظیمی-اجلاس"
-      }
-    }),
-  ]);
-  const videosList = postres?.data?.videoType?.videos?.nodes;
+  const { data } = await apolloClient.query({
+    query: VideoByType,
+    variables: {
+      id: "organizational-meeting",
+    },
+  });
+  const videosList = data?.videoType.videos.nodes || [];
 
-  if (!videosList) {
-    throw new Error('Failed to fetch data')
-  }
-
-  return { props: { videosList } }
-}
+  return {
+    props: {
+      videosList,
+    },
+  };
+};

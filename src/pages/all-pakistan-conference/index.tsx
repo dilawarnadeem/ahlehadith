@@ -21,13 +21,13 @@ export default function AllPakistanConferences({ videosList }: any) {
 
   return (
     <>
-      <SeoMeta title="مرکزی کانفرنسز" description="مرکزی جمعیت اہل حدیث پاکستان اہل حدیث کی نمائندہ مذہبی و سیاسی جماعت ہے" url="markazi-conferences" />
+      <SeoMeta title="آل پاکستان کانفرنس" description="مرکزی جمعیت اہل حدیث پاکستان اہل حدیث کی نمائندہ مذہبی و سیاسی جماعت ہے" url="all-pakistan-conference" />
 
       <main>
         <PageBanner
-          title="مرکزی کانفرنسز"
+          title="آل پاکستان کانفرنس"
           subTitle=""
-          image="/images/banner/markaziconferences.jpg"
+          image="/images/banner/conferences.jpg"
           buttontext=""
           buttonLink=""
         />
@@ -77,7 +77,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const { data } = await apolloClient.query({
     query: VideoByType,
     variables: {
-      id: "conference",
+      id: "all-pakistan-conference",
     },
   });
   const videosList = data?.videoType?.videos?.nodes || [];

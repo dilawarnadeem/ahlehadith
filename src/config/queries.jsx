@@ -170,6 +170,22 @@ export const VideoType = gql`
 `;
 
 
+export const VideoByType = gql`
+  query VideoByTypeSlug($id: ID = "rallies") {
+  videoType(id: $id, idType: SLUG) {
+    videos {
+      nodes {
+        title
+          videoInfo {
+            videoUrl
+          }
+      }
+    }
+  }
+}
+`;
+
+
 export const VideoByTypes = gql`
 query Videos {
   videoTypes {
@@ -187,14 +203,6 @@ query Videos {
   }
 }
   `;
-
-
-
-
-
-
-
-
 
 
 
