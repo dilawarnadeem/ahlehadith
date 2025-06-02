@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState } from "react";
 
@@ -10,7 +10,7 @@ import { GetServerSideProps } from "next";
 import SeoMeta from "@/components/seo";
 import { BsPlayCircle } from "react-icons/bs";
 import ModelBox from "@/components/modelbox";
-export default function reeliyn({ videosList }: any) {
+export default function Reeliyn({ videosList }: any) {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const [URL, setURL] = useState("");
