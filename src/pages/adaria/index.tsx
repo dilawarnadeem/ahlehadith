@@ -10,7 +10,7 @@ import SeoMeta from "@/components/seo";
 
 
 export default function Adaria({ article_data }: any) {
-    console.log("🚀 ~ Adaria ~ article_data:", article_data)
+  
     // const [modalIsOpen, setIsOpen] = useState(false);
     // const [URL, setURL] = useState('');
     // const OpenModelBox = (image) => {

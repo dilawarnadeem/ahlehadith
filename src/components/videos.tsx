@@ -23,7 +23,7 @@ export const VideosGallery = ({ videosData, type }: any) => {
       <section>
         <div className="grid md:grid-cols-4 mt-5 justify-between gap-5">
           {videosData?.map((item: any, idx: number) => {
-            console.log(item);
+          
             return (
               <div
                 key={idx}

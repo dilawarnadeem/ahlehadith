@@ -13,7 +13,7 @@ const Page = () => {
     setURL(image)
     setIsOpen(true);
   }
-  console.log(Shura_Gallery, 'abc');
+
   return (
     <>
       <SeoMeta title="شوریٰ" description="مرکزی جمعیت اہل حدیث پاکستان اہل حدیث کی نمائندہ مذہبی و سیاسی جماعت ہے" url="shura" />
