@@ -67,13 +67,17 @@ export default function QuranOhadees({ article_data }: any) {
                                                     <h2
                                                         className={`text-[18px] mt-2 leading-[2.3rem] font-medium font-ahle `}
                                                     >
-                                                        {item?.title}
+                                                        <Link href={`/articles/${item?.databaseId}`}>  {item?.title}</Link> 
                                                     </h2>
 
                                                     <div className={`text-[14px] mt-2 leading-[2.3rem] font-ahle `} dangerouslySetInnerHTML={{ __html: item?.content }} />
 
                                                 </div>
                                                 <div className="mt-3 text-text leading-8 font-normal" dangerouslySetInnerHTML={{ __html: GetWordStr(item?.excerpt) }} />
+
+                                                  <Link href={`/articles/${item?.databaseId}`}>
+                          Read More
+                        </Link>
                                             </div>
                                         </div>
                                     );

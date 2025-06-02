@@ -1,35 +1,28 @@
-
 import Footer from "@/components/footer";
 import PageBanner from "@/components/banner";
 import apolloClient from "@/config/client";
 import { singleArticle } from "@/config/queries";
-import { PostMokeData } from "@/const/post";
 import Image from "next/image";
 import React from "react";
 import { GetServerSideProps } from "next";
 
-
 export default function PostSlug({ article }: any) {
-  console.log(article);
-  
-
-
-
   return (
     <>
       <PageBanner
         title={article?.title}
         image={article?.featuredImage?.node?.mediaItemUrl}
       />
-     
-      <section className='container px-4 md:px-10 mx-auto'>
+
+      <section className="container px-4 md:px-10 mx-auto">
         <div className="lg:flex gap-10 my-10">
           <section className="lg:w-full">
             <div className="flex items-center justify-start gap-2">
               <div className="p-[5px] bg-light-blue group-hover:bg-light-blue" />
-             
             </div>
-            <h2 className="text-xl md:text-2xl capitalize mt-2 font-ahle font-bold">{article?.title}</h2>
+            <h2 className="text-xl md:text-2xl capitalize mt-2 font-ahle font-bold">
+              {article?.title}
+            </h2>
             <figure className="relative">
               <Image
                 src={article?.featuredImage?.node?.mediaItemUrl}
@@ -39,26 +32,21 @@ export default function PostSlug({ article }: any) {
                 className="w-full mt-6"
               />
             </figure>
-            <div className="mt-8 text-text leading-8 tracking-wide" dangerouslySetInnerHTML={{ __html: article?.content }} />
-
-            
-
-
+            <div
+              className="mt-8 text-text leading-8 tracking-wide"
+              dangerouslySetInnerHTML={{ __html: article?.content }}
+            />
           </section>
-
-       
         </div>
-      </section> 
+      </section>
 
       <Footer />
     </>
   );
-};
-
+}
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { slug } = context.params!;
-
   try {
     const { data } = await apolloClient.query({
       query: singleArticle,
@@ -75,7 +63,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } catch (error) {
     console.error("Error fetching article:", error);
     return {
-      notFound: true, // Or redirect depending on your UX
+      notFound: true,
     };
   }
 };
