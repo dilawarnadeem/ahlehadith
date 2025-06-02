@@ -40,7 +40,7 @@ export default function QuranOhadees({ article_data }: any) {
                                     return (
                                         <div key={idx} className={`group overflow-hidden bg-light-gray shadow-lg md:flex`}
                                         >
-                                            <Link href={`/blogs/${item?.databaseId}`} className={`md:w-1/3`}>
+                                            <Link href={`/articles/${item?.databaseId}`} className={`md:w-1/3`}>
                                                 <figure
                                                     className={`overflow-hidden relative md:w-full h-full`}
                                                 >

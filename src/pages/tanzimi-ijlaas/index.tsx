@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import React, { useState } from 'react';
 import YouTube, { YouTubeProps } from 'react-youtube';
 import { VideoByType, VideoByTypes } from '@/config/queries';

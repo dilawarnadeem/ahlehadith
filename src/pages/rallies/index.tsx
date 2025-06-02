@@ -1,5 +1,7 @@
+'use client'
+
 import React, { useState } from "react";
-import YouTube, { YouTubeProps } from "react-youtube";
+
 import { VideoByType } from "@/config/queries";
 import { getIDFromURL, getYouTubeThumbnail } from "@/utils";
 import PageBanner from "../../components/banner";
