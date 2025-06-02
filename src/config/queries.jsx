@@ -267,3 +267,21 @@ export const singlePost = gql`
     }
   }
 `;
+
+
+export const singleArticle = gql`
+  query singleArticle($id: ID = "191") {
+    article(id: $id, idType: DATABASE_ID) {    
+      id
+      title
+      date
+      content
+      databaseId
+      featuredImage {
+        node {
+          mediaItemUrl
+        }
+      }
+    }
+  }
+`;
