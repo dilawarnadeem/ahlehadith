@@ -1,8 +1,45 @@
 import PageBanner from "@/components/banner";
-import SeoMeta from "@/components/seo";
 import React from "react";
+import SeoMeta from "@/components/seo";
 
-const Page = () => {
+import { gql } from "@apollo/client";
+
+import client from "@/config/client";
+
+const SINGLE_PAGE_QUERY = gql`
+  query singleArticle($id: ID = "") {
+    page(id: $id, idType: URI) {
+      id
+      title
+      date
+      content
+      databaseId
+    }
+  }
+`;
+
+export async function getServerSideProps() {
+  try {
+    const { data } = await client.query({
+      query: SINGLE_PAGE_QUERY,
+      variables: { id: "zilayi-tanzimat" }, // replace with dynamic ID if needed
+    });
+
+    return {
+      props: {
+        pageData: data.page,
+      },
+    };
+  } catch (error:any) {
+    console.error("Error fetching page data:", error.message);
+    return {
+      notFound: true,
+    };
+  }
+}
+
+
+const Page = ({pageData}:any) => {
   return (
     <>
       <SeoMeta title="ذیلی تنظیمات" description="مرکزی جمعیت اہل حدیث پاکستان اہل حدیث کی نمائندہ مذہبی و سیاسی جماعت ہے" url="zilayi-tanzimat" />
@@ -16,44 +53,10 @@ const Page = () => {
         />
         <section className='container px-4 md:px-10 mx-auto'>
           <div className='my-10 md:my-20 md:mt-20 file:grid gap-10'>
-            <div>
-              <h2 className="text-2xl uppercase font-ahle mb-5">
-                مرکزی جمعیت اہلحدیث پاکستان کی تمام ذیلی تنظیمات کے سربراہ ڈاکٹر عبدالغفور راشد ہیں ۔
-              </h2>
-              <h3 className='font-ahle text-xl text-gray-600 dark:text-text mb-5'>
-                جمعیت کے ذیلی تنظیمات کے نام درج ذیل ہیں
-              </h3>
-            </div>
-            <div>
-              <ul className="grid gap-7">
-                <li className="font-ahle text-lg text-gray-600 dark:text-text ">
-                  اہل حدیث یوتھ فورس
-                </li>
-                <li className="font-ahle text-lg text-gray-600 dark:text-text ">
-                  اہل حدیث سٹوڈنٹس فیڈریشن
-                </li>
-                <li className="font-ahle text-lg text-gray-600 dark:text-text ">
-                  جمیعت اساتذہ پاکستان
-                </li>
-                <li className="font-ahle text-lg text-gray-600 dark:text-text ">
-                  جمعیت طلبہ اہلحدیث
-                </li>
-                <li className="font-ahle text-lg text-gray-600 dark:text-text ">
-                  متحدہ حکماء محاذ
-                </li>
-                <li className="font-ahle text-lg text-gray-600 dark:text-text ">
-                  اہلحدیث نعت کونسل
-                </li>
-                <li className="font-ahle text-lg text-gray-600 dark:text-text ">
-                  وکلاء سلفیہ پاکستان
-                </li>
-                <li className="font-ahle text-lg text-gray-600 dark:text-text ">
-                  جمعیت اہلحدیث خواتین ونگ</li>
-                <li className="font-ahle text-lg text-gray-600 dark:text-text ">
-                  جمعیت القراء اہلحدیث پاکستان
-                </li>
-              </ul>
-            </div>
+            <div
+              className="prose max-w-none font-ahle text-gray-600 dark:text-text"
+              dangerouslySetInnerHTML={{ __html: pageData?.content }}
+            />
           </div>
         </section>
       </main>
