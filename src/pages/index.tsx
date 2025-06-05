@@ -1,35 +1,43 @@
 import Main1 from "../components/main1";
-import Sub_Nav from "../components/sub-nav"
+import Sub_Nav from "../components/sub-nav";
 import Tabs from "../components/tabs";
 import Link from "next/link";
 import { ConvertDateIntoUrdu, GetWordStr } from "../utils/index";
-import { PostMokeData } from "@/const/post"
+import { PostMokeData } from "@/const/post";
 
 import { VideosGallery } from "../components/videos";
 import BooksSection from "../components/bookssection";
-import Team from "../components/team"
-import apolloClient from '../config/client';
-import { AllPosts, Books, Members, HomePage, Videos } from '@/config/queries';
+import Team from "../components/team";
+import apolloClient from "../config/client";
+import { AllPosts, Books, Members, HomePage, Videos } from "@/config/queries";
 import { GetServerSideProps } from "next";
 
 import SeoMeta from "@/components/seo";
 
-export default function Home({ postData, home, videosData, booksData, membersData }: any) {
+export default function Home({
+  postData,
+  home,
+  videosData,
+  booksData,
+  membersData,
+}: any) {
+  const intro = home.introduction;
+  const dailyQuran = home.dailyQuran;
+  const dailyHadees = home.dailyHadees;
+  const aqwalSalaf = home.aqwalSalaf;
 
-
-    const intro = home.introduction
-      console.log(intro);
-
-  
-
-  const posts = postData
+  const posts = postData;
   return (
     <>
-      <SeoMeta title="مرکزی جمعیت" description="مرکزی جمعیت اہل حدیث پاکستان اہل حدیث کی نمائندہ مذہبی و سیاسی جماعت ہے" url="" />
+      <SeoMeta
+        title="مرکزی جمعیت"
+        description="مرکزی جمعیت اہل حدیث پاکستان اہل حدیث کی نمائندہ مذہبی و سیاسی جماعت ہے"
+        url=""
+      />
       <Main1 />
       <Sub_Nav />
-      <Tabs intro={intro}/>
-      <section className='container px-4 md:px-10 mx-auto'>
+      <Tabs intro={intro} />
+      <section className="container px-4 md:px-10 mx-auto">
         <div className="my-10 md:my-20 md:mt-20">
           <div className="my-5">
             <h2 className="text-3xl leading-[4rem] uppercase font-ahle ahle-heading">
@@ -47,7 +55,6 @@ export default function Home({ postData, home, videosData, booksData, membersDat
                         alt="thumbnil"
                         width={400}
                         height={400}
-
                         className="w-full h-full object-cover opacity-60"
                       />
                     </Link>
@@ -58,7 +65,10 @@ export default function Home({ postData, home, videosData, booksData, membersDat
                       {ConvertDateIntoUrdu(item?.date)}
                     </span>
                     <div className="absolute bottom-0 md:p-5 p-2 bg-white w-full border-t-4 border-yellow">
-                      <Link href={`/blogs/${item.databaseId}`} className="text-2xl font-ahle text-black">
+                      <Link
+                        href={`/blogs/${item.databaseId}`}
+                        className="text-2xl font-ahle text-black"
+                      >
                         {item?.title}
                       </Link>
                     </div>
@@ -69,9 +79,14 @@ export default function Home({ postData, home, videosData, booksData, membersDat
             <div className="flex flex-col mt-5 md:mt-0 justify-between gap-5 md:w-[60%] w-full">
               {posts?.slice(1, 4).map((item: any, idx: number) => {
                 return (
-                  <div key={idx} className={`group overflow-hidden bg-light-gray shadow-lg md:flex`}
+                  <div
+                    key={idx}
+                    className={`group overflow-hidden bg-light-gray shadow-lg md:flex`}
                   >
-                    <Link href={`/blogs/${item?.databaseId}`} className={`md:w-1/3`}>
+                    <Link
+                      href={`/blogs/${item?.databaseId}`}
+                      className={`md:w-1/3`}
+                    >
                       <figure
                         className={`overflow-hidden relative md:w-full h-full`}
                       >
@@ -80,17 +95,16 @@ export default function Home({ postData, home, videosData, booksData, membersDat
                           alt=""
                           width={400}
                           height={400}
-
                           className={`w-full md:h-full group-hover:scale-110 transition-all duration-300 ease-in-out object-cover h-[240px] sm:h-[190px]`}
                         />
                       </figure>
                     </Link>
-                    <div
-                      className={`bg-light-gray md:w-2/3 p-6 `}
-                    >
+                    <div className={`bg-light-gray md:w-2/3 p-6 `}>
                       <div className={``}>
                         <p className="capitalize text-light-blue text-sm">
-                          <span className="uppercase">{ConvertDateIntoUrdu(item.date)}</span>
+                          <span className="uppercase">
+                            {ConvertDateIntoUrdu(item.date)}
+                          </span>
                           <span> - </span>
                           <span>By {item?.author?.node?.name}</span>
                         </p>
@@ -102,7 +116,12 @@ export default function Home({ postData, home, videosData, booksData, membersDat
                           </h2>
                         </Link>
                       </div>
-                      <div className="mt-3 text-text leading-8 font-normal" dangerouslySetInnerHTML={{ __html: GetWordStr(item?.excerpt) }} />
+                      <div
+                        className="mt-3 text-text leading-8 font-normal"
+                        dangerouslySetInnerHTML={{
+                          __html: GetWordStr(item?.excerpt),
+                        }}
+                      />
                     </div>
                   </div>
                 );
@@ -111,70 +130,84 @@ export default function Home({ postData, home, videosData, booksData, membersDat
           </div>
         </div>
       </section>
-      <section className='container px-4 md:px-10 mx-auto'>
+      <section className="container px-4 md:px-10 mx-auto">
         <div className="my-10 md:my-20 md:mt-20">
           <div className="grid md:grid-cols-3 grid-cols-1 gap-5 ">
             <div className=" border border-light-gray">
               <div className="bg-[#012f1e] p-5 flex gap-3 items-center">
-                <img src="/images/iqra-icon.png" alt="iqra-icon.png" width={50} height={50} />
+                <img
+                  src="/images/iqra-icon.png"
+                  alt="iqra-icon.png"
+                  width={50}
+                  height={50}
+                />
                 <h2 className="text-3xl leading-[4rem] uppercase font-ahle text-white">
                   روزانہ قرآن
                 </h2>
               </div>
               <div className="p-5">
-                {/* <p className="font-ahle text-lg text-gray-600 dark:text-text">
-                  <span>{HomeInfo.[0]?.title}: </span>
-                  <span>{HomeInfo[0]?.dailyUpdatesInfo?.description}</span>
+                <p className="font-ahle text-lg text-gray-600 dark:text-text">
+                  <span>{dailyQuran?.quranAyat}: </span>
+                  <span>{dailyQuran?.quraniAyatTranslations}</span>
                 </p>
 
                 <p className="font-ahle text-lg text-gray-600 dark:text-text mt-5">
-                  {HomeInfo[0]?.dailyUpdatesInfo?.source}
-                </p> */}
+                  {dailyQuran?.refernece}
+                </p>
               </div>
             </div>
             <div className=" border border-light-gray">
               <div className="bg-[#012f1e] p-5 flex gap-3 items-center">
-                <img src="/images/iqra-icon.png" alt="iqra-icon.png" width={50} height={50} />
+                <img
+                  src="/images/iqra-icon.png"
+                  alt="iqra-icon.png"
+                  width={50}
+                  height={50}
+                />
                 <h2 className="text-3xl leading-[4rem] uppercase font-ahle text-white">
                   روزانہ کی حدیث
                 </h2>
               </div>
-              {/* <div className="p-5">
+              <div className="p-5">
                 <p className="font-ahle text-lg text-gray-600 dark:text-text">
-                  <span>{HomeInfo[0]?.title}: </span>
-                  <span>{HomeInfo[0]?.dailyUpdatesInfo?.description}</span>
+                  <span>{dailyHadees?.hadeesArabic}: </span>
+                  <span>{dailyHadees?.hadeesTranslations}</span>
                 </p>
-                <p className="font-ahle text-lg text-gray-600 dark:text-text mt-5">۔ {HomeInfo[0]?.dailyUpdatesInfo?.source}</p>
-              </div> */}
+                <p className="font-ahle text-lg text-gray-600 dark:text-text mt-5">
+                  ۔ {dailyHadees?.refernece}
+                </p>
+              </div>
             </div>
             <div className=" border border-light-gray">
               <div className="bg-[#012f1e] p-5 flex gap-3 items-center">
-                <img src="/images/iqra-icon.png" alt="iqra-icon.png" width={50} height={50} />
+                <img
+                  src="/images/iqra-icon.png"
+                  alt="iqra-icon.png"
+                  width={50}
+                  height={50}
+                />
                 <h2 className="text-3xl leading-[4rem] uppercase font-ahle text-white">
                   اقوالِ سلف
                 </h2>
               </div>
               <div className="px-5">
                 <ul className="divide-y divide-border ">
-                  {/* <li className="py-3">
+                  <li className="py-3">
                     <p className="font-ahle text-lg text-pure">
-                      <span>{HomeInfo[0]?.title}: </span>
-                      <span>{HomeInfo[0]?.dailyUpdatesInfo?.description}</span>
+                      <span>{aqwalSalaf?.title}: </span>
+                      <span>{aqwalSalaf.description}</span>
                     </p>
-                    <p className="font-ahle text-lg text-pure dark:text-text mt-5">۔ {HomeInfo[0]?.dailyUpdatesInfo?.source}</p>
-                  </li> */}
+                  </li>
                 </ul>
-
               </div>
             </div>
           </div>
         </div>
       </section>
       <section className="py-16 bg-[url('/images/tabdeeli.jpg')] bg-center bg-cover bg-black/50 bg-blend-multiply">
-        <section className='container px-4 md:px-10 mx-auto'>
+        <section className="container px-4 md:px-10 mx-auto">
           <div className="flex md:flex-row flex-col gap-5">
-            <div className="md:w-1/4 w-full">
-            </div>
+            <div className="md:w-1/4 w-full"></div>
             <div className="md:w-3/4 w-full flex md:flex-row flex-col gap-5 items-center justify-end">
               <div>
                 <h2 className="text-2xl uppercase text-white font-ahle mb-3">
@@ -185,8 +218,10 @@ export default function Home({ postData, home, videosData, booksData, membersDat
                 </h3>
               </div>
               <div>
-                <Link href="/join-us"
-                  className="bg-yellow text-pure hover:bg-light-blue border-yellow hover:text-white border hover:border-light-blue text-xl px-8 py-2.5 uppercase">
+                <Link
+                  href="/join-us"
+                  className="bg-yellow text-pure hover:bg-light-blue border-yellow hover:text-white border hover:border-light-blue text-xl px-8 py-2.5 uppercase"
+                >
                   ووٹر بنیں
                 </Link>
               </div>
@@ -194,7 +229,7 @@ export default function Home({ postData, home, videosData, booksData, membersDat
           </div>
         </section>
       </section>
-      <section className='container px-4 md:px-10 mx-auto'>
+      <section className="container px-4 md:px-10 mx-auto">
         <section className="my-10 md:my-16 md:mt-16">
           <div className="">
             <div className="my-20">
@@ -207,7 +242,7 @@ export default function Home({ postData, home, videosData, booksData, membersDat
                     href="/videos"
                     className="p-2 px-4 rounded-md bg-light-gray active:scale-105 hover:underline hover:shadow-lg"
                   >
-                    وڈیو وزٹ  کریں
+                    وڈیو وزٹ کریں
                   </Link>
                 </div>
               </div>
@@ -232,10 +267,10 @@ export default function Home({ postData, home, videosData, booksData, membersDat
                 <BooksSection booksData={booksData} />
               </div>
             </div>
-          </div >
-        </section >
+          </div>
+        </section>
       </section>
-      <section className='container px-4 md:px-10 mx-auto'>
+      <section className="container px-4 md:px-10 mx-auto">
         <div className="my-20">
           <div className="my-14">
             <div className="flex justify-between items-center">
@@ -255,9 +290,7 @@ export default function Home({ postData, home, videosData, booksData, membersDat
       </section>
     </>
   );
-};
-
-
+}
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const [posts, homepage, videos, books, members] = await Promise.all([
@@ -272,14 +305,18 @@ export const getServerSideProps: GetServerSideProps = async () => {
       },
     }),
   ]);
-  const postData = posts?.data?.posts?.nodes
-  const home = homepage.data.page.home_info
-  const videosData = videos?.data?.videos?.nodes
-  const booksData = books?.data?.books?.edges
-  const membersData = members?.data?.members?.nodes
+  const postData = posts?.data?.posts?.nodes;
+  const home = homepage.data.page.home_info;
+  const videosData = videos?.data?.videos?.nodes;
+  const booksData = books?.data?.books?.edges;
+  const membersData = members?.data?.members?.nodes;
   return {
     props: {
-      postData, home, videosData, booksData, membersData
+      postData,
+      home,
+      videosData,
+      booksData,
+      membersData,
     },
   };
-}
+};
