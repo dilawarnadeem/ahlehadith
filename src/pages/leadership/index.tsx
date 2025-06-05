@@ -40,7 +40,7 @@ export async function getServerSideProps() {
         pageData: data.page,
       },
     };
-  } catch (error) {
+  } catch (error:any) {
     console.error("Error fetching page data:", error.message);
     return {
       notFound: true,

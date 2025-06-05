@@ -11,7 +11,7 @@ import client from '@/config/client';
 
 const SINGLE_PAGE_QUERY = gql`
   query singleArticle($id: ID = "") {
-    page(id: $id, idType: DATABASE_ID) {
+    page(id: $id, idType: URI) {
       id
       title
       date
@@ -25,7 +25,7 @@ export async function getServerSideProps() {
   try {
     const { data } = await client.query({
       query: SINGLE_PAGE_QUERY,
-      variables: { id: "4122" }, // replace with dynamic ID if needed
+      variables: { id: "cabinet" }, // replace with dynamic ID if needed
     });
 
     return {
@@ -33,7 +33,7 @@ export async function getServerSideProps() {
         pageData: data.page,
       },
     };
-  } catch (error) {
+  } catch (error:any) {
     console.error("Error fetching page data:", error.message);
     return {
       notFound: true,
