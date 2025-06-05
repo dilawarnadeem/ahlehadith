@@ -32,53 +32,44 @@ export const AllPosts = gql`
   }
 `;
 
-export const UpdatesByCategoryHadees = gql`
-  query UpdatesByCategory {
-    updateType(id: "daily-hadees", idType: SLUG) {
-      updates(first: 1, where: { orderby: { field: DATE, order: DESC } }) {
-        nodes {
-          title
-          dailyUpdatesInfo {
-            source
-            description
-          }
+export const HomePage = gql`
+  query HomePage($id: ID = "home") {
+  page(id: $id, idType: URI) {
+    slug
+    id
+    title
+    date
+    content
+    databaseId
+    home_info {
+      introduction {
+        description
+        designation
+        leader
+        image {
+          mediaItemUrl
         }
+      }
+      aqwalSalaf {
+        description
+        title
+      }
+      dailyHadees {
+        refernece
+        hadeesTranslations
+        hadeesArabic
+      }
+      dailyQuran {
+        refernece
+        quraniAyatTranslations
+        quranAyat
       }
     }
   }
+}
 `;
 
-export const UpdatesByCategoryQuran = gql`
-  query UpdatesByCategory {
-    updateType(id: "daily-quran", idType: SLUG) {
-      updates(first: 1, where: { orderby: { field: DATE, order: DESC } }) {
-        nodes {
-          title
-          dailyUpdatesInfo {
-            source
-            description
-          }
-        }
-      }
-    }
-  }
-`;
 
-export const UpdatesByCategoryQoute = gql`
-  query UpdatesByCategory {
-    updateType(id: "daily-qoute", idType: SLUG) {
-      updates(first: 1, where: { orderby: { field: DATE, order: DESC } }) {
-        nodes {
-          title
-          dailyUpdatesInfo {
-            source
-            description
-          }
-        }
-      }
-    }
-  }
-`;
 
 export const Videos = gql`
   query videos {

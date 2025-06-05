@@ -9,12 +9,18 @@ import { VideosGallery } from "../components/videos";
 import BooksSection from "../components/bookssection";
 import Team from "../components/team"
 import apolloClient from '../config/client';
-import { AllPosts, Books, Members, UpdatesByCategoryHadees, UpdatesByCategoryQoute, UpdatesByCategoryQuran, Videos } from '@/config/queries';
+import { AllPosts, Books, Members, HomePage, Videos } from '@/config/queries';
 import { GetServerSideProps } from "next";
 
 import SeoMeta from "@/components/seo";
 
-export default function Home({ postData, dailyHadees, dailyQuran, dailyQoute, videosData, booksData, membersData }: any) {
+export default function Home({ postData, home, videosData, booksData, membersData }: any) {
+
+
+    const intro = home.introduction
+      console.log(intro);
+
+  
 
   const posts = postData
   return (
@@ -22,7 +28,7 @@ export default function Home({ postData, dailyHadees, dailyQuran, dailyQoute, vi
       <SeoMeta title="مرکزی جمعیت" description="مرکزی جمعیت اہل حدیث پاکستان اہل حدیث کی نمائندہ مذہبی و سیاسی جماعت ہے" url="" />
       <Main1 />
       <Sub_Nav />
-      <Tabs />
+      <Tabs intro={intro}/>
       <section className='container px-4 md:px-10 mx-auto'>
         <div className="my-10 md:my-20 md:mt-20">
           <div className="my-5">
@@ -116,14 +122,14 @@ export default function Home({ postData, dailyHadees, dailyQuran, dailyQoute, vi
                 </h2>
               </div>
               <div className="p-5">
-                <p className="font-ahle text-lg text-gray-600 dark:text-text">
-                  <span>{dailyQuran[0]?.title}: </span>
-                  <span>{dailyQuran[0]?.dailyUpdatesInfo?.description}</span>
+                {/* <p className="font-ahle text-lg text-gray-600 dark:text-text">
+                  <span>{HomeInfo.[0]?.title}: </span>
+                  <span>{HomeInfo[0]?.dailyUpdatesInfo?.description}</span>
                 </p>
 
                 <p className="font-ahle text-lg text-gray-600 dark:text-text mt-5">
-                  {dailyQuran[0]?.dailyUpdatesInfo?.source}
-                </p>
+                  {HomeInfo[0]?.dailyUpdatesInfo?.source}
+                </p> */}
               </div>
             </div>
             <div className=" border border-light-gray">
@@ -133,13 +139,13 @@ export default function Home({ postData, dailyHadees, dailyQuran, dailyQoute, vi
                   روزانہ کی حدیث
                 </h2>
               </div>
-              <div className="p-5">
+              {/* <div className="p-5">
                 <p className="font-ahle text-lg text-gray-600 dark:text-text">
-                  <span>{dailyHadees[0]?.title}: </span>
-                  <span>{dailyHadees[0]?.dailyUpdatesInfo?.description}</span>
+                  <span>{HomeInfo[0]?.title}: </span>
+                  <span>{HomeInfo[0]?.dailyUpdatesInfo?.description}</span>
                 </p>
-                <p className="font-ahle text-lg text-gray-600 dark:text-text mt-5">۔ {dailyHadees[0]?.dailyUpdatesInfo?.source}</p>
-              </div>
+                <p className="font-ahle text-lg text-gray-600 dark:text-text mt-5">۔ {HomeInfo[0]?.dailyUpdatesInfo?.source}</p>
+              </div> */}
             </div>
             <div className=" border border-light-gray">
               <div className="bg-[#012f1e] p-5 flex gap-3 items-center">
@@ -150,13 +156,13 @@ export default function Home({ postData, dailyHadees, dailyQuran, dailyQoute, vi
               </div>
               <div className="px-5">
                 <ul className="divide-y divide-border ">
-                  <li className="py-3">
+                  {/* <li className="py-3">
                     <p className="font-ahle text-lg text-pure">
-                      <span>{dailyQoute[0]?.title}: </span>
-                      <span>{dailyQoute[0]?.dailyUpdatesInfo?.description}</span>
+                      <span>{HomeInfo[0]?.title}: </span>
+                      <span>{HomeInfo[0]?.dailyUpdatesInfo?.description}</span>
                     </p>
-                    <p className="font-ahle text-lg text-pure dark:text-text mt-5">۔ {dailyQoute[0]?.dailyUpdatesInfo?.source}</p>
-                  </li>
+                    <p className="font-ahle text-lg text-pure dark:text-text mt-5">۔ {HomeInfo[0]?.dailyUpdatesInfo?.source}</p>
+                  </li> */}
                 </ul>
 
               </div>
@@ -254,11 +260,9 @@ export default function Home({ postData, dailyHadees, dailyQuran, dailyQoute, vi
 
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const [posts, hadees, quran, qoute, videos, books, members] = await Promise.all([
+  const [posts, homepage, videos, books, members] = await Promise.all([
     apolloClient.query({ query: AllPosts }),
-    apolloClient.query({ query: UpdatesByCategoryHadees }),
-    apolloClient.query({ query: UpdatesByCategoryQuran }),
-    apolloClient.query({ query: UpdatesByCategoryQoute }),
+    apolloClient.query({ query: HomePage }),
     apolloClient.query({ query: Videos }),
     apolloClient.query({ query: Books }),
     apolloClient.query({
@@ -269,15 +273,13 @@ export const getServerSideProps: GetServerSideProps = async () => {
     }),
   ]);
   const postData = posts?.data?.posts?.nodes
-  const dailyHadees = hadees?.data?.updateType?.updates?.nodes
-  const dailyQuran = quran?.data?.updateType?.updates?.nodes
-  const dailyQoute = qoute?.data?.updateType?.updates?.nodes
+  const home = homepage.data.page.home_info
   const videosData = videos?.data?.videos?.nodes
   const booksData = books?.data?.books?.edges
   const membersData = members?.data?.members?.nodes
   return {
     props: {
-      postData, dailyHadees, dailyQuran, dailyQoute, videosData, booksData, membersData
+      postData, home, videosData, booksData, membersData
     },
   };
 }
