@@ -50,9 +50,9 @@ const Team = ({membersData}) => {
         <>
             <section className="relative blogs ">
                 <Slider ref={slider} {...settings}>
-                    {membersData?.map((item) => {
+                    {membersData?.map((item, idx) => {
                         return (
-                           <div className='px-3' key={item.img}>
+                           <div className='px-3' key={idx}>
                             <div  className='h-[590px] relative before:content-[" "] before:absolute before:top-3 before:bottom-3 before:left-3 before:right-3 before:border-white before:border group'>
                             <div className='h-full w-full '>
                                 <img src={item?.featuredImage?.node?.mediaItemUrl}
