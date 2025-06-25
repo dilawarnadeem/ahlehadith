@@ -3,6 +3,9 @@ import React from 'react';
 import YouTube, { YouTubeProps } from 'react-youtube';
 import PageBanner from '@/components/banner';
 import SeoMeta from "@/components/seo";
+import { GetServerSideProps } from 'next';
+import apolloClient from '@/config/client';
+import { PictureData } from '@/config/queries';
 const Page = () => {
   const onPlayerReady: YouTubeProps['onReady'] = (event: any) => {
     event.target.pauseVideo();
@@ -53,3 +56,22 @@ const Page = () => {
 };
 
 export default Page;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const [pictures] = await Promise.all([
+    apolloClient.query({
+      query: PictureData,
+      variables: {
+        id: "print-media",
+      }
+    }),
+  ]);
+  const picturesData = pictures?.data?.picture;
+
+  if (!pictures) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return { props: { picturesData } };
+}
