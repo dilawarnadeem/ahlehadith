@@ -26,12 +26,15 @@ export const getIDFromURL = (url) =>{
 
 
 export function getYouTubeThumbnail(url) {
-     const regex = /(?:youtu\.be\/|youtube\.com\/(?:.*v=|.*\/|.*embed\/|.*shorts\/))([^?&]+)/;
-     const match = url.match(regex);
-     
-     if (match && match[1]) {
-         return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
-     } else {
-         return "Invalid YouTube URL";
-     }
- }
+  if (!url || typeof url !== 'string') return null; // Handle null, undefined, or non-string input
+
+  const regex = /(?:youtu\.be\/|youtube\.com\/(?:.*v=|.*\/|.*embed\/|.*shorts\/))([^?&]+)/;
+  const match = url.match(regex);
+
+  if (match && match[1]) {
+    const videoId = match[1];
+    return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+  }
+
+  return null; // If no match
+}
