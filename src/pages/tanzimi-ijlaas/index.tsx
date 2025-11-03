@@ -49,7 +49,7 @@ export default function Tanzeemiijlas({ videosList }: any) {
                       className="rounded-xl relative md:rounded-xl  border-[6px] border-white dark:border-transparent shadow-xl overflow-hidden inline-block"
                     >
                       <img
-                        src={getYouTubeThumbnail(item?.videoInfo?.videoUrl)}
+                        src={getYouTubeThumbnail(item?.videoInfo?.videoUrl) || ""}
                         alt="thumbnil"
                         width={360}
                         height={360}
