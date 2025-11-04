@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const AllPosts = gql`
   query ALLPOSTS {
@@ -34,42 +34,40 @@ export const AllPosts = gql`
 
 export const HomePage = gql`
   query HomePage($id: ID = "home") {
-  page(id: $id, idType: URI) {
-    slug
-    id
-    title
-    date
-    content
-    databaseId
-    home_info {
-      introduction {
-        description
-        designation
-        leader
-        image {
-          mediaItemUrl
+    page(id: $id, idType: URI) {
+      slug
+      id
+      title
+      date
+      content
+      databaseId
+      home_info {
+        introduction {
+          description
+          designation
+          leader
+          image {
+            mediaItemUrl
+          }
         }
-      }
-      aqwalSalaf {
-        description
-        title
-      }
-      dailyHadees {
-        refernece
-        hadeesTranslations
-        hadeesArabic
-      }
-      dailyQuran {
-        refernece
-        quraniAyatTranslations
-        quranAyat
+        aqwalSalaf {
+          description
+          title
+        }
+        dailyHadees {
+          refernece
+          hadeesTranslations
+          hadeesArabic
+        }
+        dailyQuran {
+          refernece
+          quraniAyatTranslations
+          quranAyat
+        }
       }
     }
   }
-}
 `;
-
-
 
 export const Videos = gql`
   query videos {
@@ -109,29 +107,21 @@ export const Books = gql`
 `;
 
 export const Articles = gql`
-  query articles($terms: [String] = "") {
-    articles(
-      where: {
-        taxQuery: {
-          relation: AND
-          taxArray: { terms: $terms, taxonomy: ARTICLECATEGORY, field: SLUG }
-        }
-      }
-    ) {
-      nodes {
-        date
-        content
-        slug
-        databaseId
-        title
-        featuredImage {
-          node {
-            mediaItemUrl
-          }
+  query articles {
+  articles {
+    nodes {
+      slug
+      title
+      content
+      articleId
+      featuredImage {
+        node {
+          mediaItemUrl
         }
       }
     }
   }
+}
 `;
 
 export const Members = gql`
@@ -160,31 +150,12 @@ export const VideoType = gql`
   }
 `;
 
-
 export const VideoByType = gql`
   query VideoByTypeSlug($id: ID = "rallies") {
-  videoType(id: $id, idType: SLUG) {
-    videos {
-      nodes {
-        title
-          videoInfo {
-            videoUrl
-          }
-      }
-    }
-  }
-}
-`;
-
-
-export const VideoByTypes = gql`
-query Videos {
-  videoTypes {
-    nodes {
-      name
-      videos {       
+    videoType(id: $id, idType: SLUG) {
+      videos {
         nodes {
-        title
+          title
           videoInfo {
             videoUrl
           }
@@ -192,10 +163,25 @@ query Videos {
       }
     }
   }
-}
-  `;
+`;
 
-
+export const VideoByTypes = gql`
+  query Videos {
+    videoTypes {
+      nodes {
+        name
+        videos {
+          nodes {
+            title
+            videoInfo {
+              videoUrl
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export const PictureData = gql`
   query PictureData($id: ID!) {
@@ -212,21 +198,21 @@ export const PictureData = gql`
 `;
 
 export const videosTypes = gql`
-query videosTypes {
-  videoTypes {
-    nodes {
-      name
-      videos {
-        nodes {
-           videoInfo {
-            videoUrl
+  query videosTypes {
+    videoTypes {
+      nodes {
+        name
+        videos {
+          nodes {
+            videoInfo {
+              videoUrl
+            }
+            title
           }
-          title
         }
       }
     }
   }
-}
 `;
 
 export const singlePost = gql`
@@ -259,10 +245,9 @@ export const singlePost = gql`
   }
 `;
 
-
 export const singleArticle = gql`
   query singleArticle($id: ID = "191") {
-    article(id: $id, idType: DATABASE_ID) {    
+    article(id: $id, idType: DATABASE_ID) {
       id
       title
       date

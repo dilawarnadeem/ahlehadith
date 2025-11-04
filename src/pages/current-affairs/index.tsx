@@ -26,16 +26,16 @@ export default function CurrentAffairs({ article_data }: any) {
 
       <main>
         <PageBanner
-          title="علمائےکرام/معروف شخصیات"
+          title="حالات حاظرہ خاص مضامین"
           subTitle=""
-          image="/images/banner/ulma.jpg"
+          image=""
           buttontext=""
           buttonLink=""
         />
         <section className="relative blogs">
           <div className="container px-4 md:px-10 mx-auto">
             <div className="my-10 md:my-20 md:mt-20 file:grid gap-10">
-              <div className="flex flex-col mt-5 md:mt-0 justify-between gap-5 md:w-[60%] w-full">
+              <div className="flex flex-col mt-5 md:mt-0 justify-between gap-5  w-full">
                 {article_data?.map((item: any, idx: number) => {
                   return (
                     <div
@@ -43,7 +43,7 @@ export default function CurrentAffairs({ article_data }: any) {
                       className={`group overflow-hidden bg-light-gray shadow-lg md:flex`}
                     >
                       <Link
-                        href={`/articles/${item?.databaseId}`}
+                        href={`/articles/${item?.slug}`}
                         className={`md:w-1/3`}
                       >
                         <figure
@@ -61,9 +61,7 @@ export default function CurrentAffairs({ article_data }: any) {
                       <div className={`bg-light-gray md:w-2/3 p-6 `}>
                         <div className={``}>
                           <p className="capitalize text-light-blue text-sm">
-                            <span className="uppercase">
-                              {ConvertDateIntoUrdu(item.date)}
-                            </span>
+                            <span className="uppercase"></span>
                             <span> - </span>
                             <span>By {item?.author?.node?.name}</span>
                           </p>
@@ -107,9 +105,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const [articles] = await Promise.all([
     apolloClient.query({
       query: Articles,
-      variables: {
-        terms: "current-affairs",
-      },
     }),
   ]);
   const article_data = articles?.data?.articles?.nodes;
