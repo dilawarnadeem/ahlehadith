@@ -23,7 +23,7 @@ const Pictures = () => {
       <SeoMeta title="دستور" description="مرکزی جمعیت اہل حدیث پاکستان اہل حدیث کی نمائندہ مذہبی و سیاسی جماعت ہے" url="dastoor" />
 
       <PageBanner
-        title="دستور"
+        title=""
         subTitle=""
         image="/images/banner/dastoor.jpg"
         buttontext=""
