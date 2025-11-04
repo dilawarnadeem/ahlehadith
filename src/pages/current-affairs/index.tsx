@@ -43,7 +43,7 @@ export default function CurrentAffairs({ article_data }: any) {
                       className={`group overflow-hidden bg-light-gray shadow-lg md:flex`}
                     >
                       <Link
-                        href={`/articles/${item?.slug}`}
+                        href={`/articles/${item?.articleId}`}
                         className={`md:w-1/3`}
                       >
                         <figure

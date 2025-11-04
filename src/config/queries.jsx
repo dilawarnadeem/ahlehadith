@@ -246,7 +246,7 @@ export const singlePost = gql`
 `;
 
 export const singleArticle = gql`
-  query singleArticle($id: ID = "191") {
+  query singleArticle($id: ID = "") {
     article(id: $id, idType: DATABASE_ID) {
       id
       title
