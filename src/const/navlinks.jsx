@@ -50,12 +50,9 @@ export const NavLinks = [
                },
                {
                     name: 'تاریخ اہلحدیث',
-                    link: '#',
+                    link: '/history',
                },
-               {
-                    name: 'تزکرہ اسلاف',
-                    link: '#',
-               },
+              
                {
                     name: 'علمائےکرام/معروف شخصیات',
                     link: '/ulma-ikram',

@@ -8,14 +8,12 @@ interface GenericPageProps {
   defaultImage?: string;
 }
 
-export default function GenericPage({
+export default function FlexiblePage({
   pageData,
   defaultImage,
 }: GenericPageProps) {
   if (!pageData) return <p>Page not found</p>;
-
   const flexibleBlocks = pageData?.flexiblePage?.flexiblePage || [];
-
   return (
     <>
       <SeoMeta
@@ -36,14 +34,6 @@ export default function GenericPage({
           buttontext=""
           buttonLink=""
         />
-
-        {/* ✅ Main page content (if exists) */}
-        {pageData.content && (
-          <section
-            className="container px-4 md:px-10 mx-auto my-10 md:my-20"
-            dangerouslySetInnerHTML={{ __html: pageData.content }}
-          />
-        )}
 
         {/* ✅ Flexible Page Sections */}
         {flexibleBlocks.length > 0 && (

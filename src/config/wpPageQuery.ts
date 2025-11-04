@@ -3,35 +3,38 @@ import client from "@/config/client"; // make sure you have Apollo setup here
 
 export const PAGE_QUERY = gql`
   query PAGE_QUERY($id: ID = "cabinet") {
-  page(id: $id, idType: URI) {
-    slug
-    id
-    title
-    date
-    content
-    databaseId
-    flexiblePage {
+    page(id: $id, idType: URI) {
+      slug
+      id
+      title
+      date
+      content
+      databaseId
+      template {
+        templateName
+      }
       flexiblePage {
-        ... on Page_Flexiblepage_FlexiblePage_TextOnly {
-          editor
-          fieldGroupName
-        }
-        ... on Page_Flexiblepage_FlexiblePage_ImageGallery {
-          fieldGroupName
-          imageGallary {
-            mediaItemUrl
+        flexiblePage {
+          ... on Page_Flexiblepage_FlexiblePage_TextOnly {
+            editor
+            fieldGroupName
           }
-        }
-        ... on Page_Flexiblepage_FlexiblePage_VideoGallery {
+          ... on Page_Flexiblepage_FlexiblePage_ImageGallery {
           fieldGroupName
-          videoGallery {
-            videoLink
+            imageGallary {
+              mediaItemUrl
+            }
+          }
+          ... on Page_Flexiblepage_FlexiblePage_VideoGallery {
+          fieldGroupName
+            videoGallery {
+              videoLink
+            }
           }
         }
       }
     }
   }
-}
 `;
 
 export async function getPageData(id: string) {
