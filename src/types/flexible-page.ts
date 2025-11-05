@@ -5,6 +5,7 @@ export interface TextBlock {
 
 export interface ImageGalleryBlock {
   fieldGroupName: "Page_Flexiblepage_FlexiblePage_ImageGallery";
+   heading: string;
   imageGallary: {
     mediaItemUrl: string;
   }[];
@@ -12,6 +13,7 @@ export interface ImageGalleryBlock {
 
 export interface VideoGalleryBlock {
   fieldGroupName: "Page_Flexiblepage_FlexiblePage_VideoGallery";
+  heading: string;
   videoGallery: {
     videoLink: string;
   }[];

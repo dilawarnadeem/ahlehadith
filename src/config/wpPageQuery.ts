@@ -21,12 +21,14 @@ export const PAGE_QUERY = gql`
           }
           ... on Page_Flexiblepage_FlexiblePage_ImageGallery {
           fieldGroupName
+           heading
             imageGallary {
               mediaItemUrl
             }
           }
           ... on Page_Flexiblepage_FlexiblePage_VideoGallery {
           fieldGroupName
+           heading
             videoGallery {
               videoLink
             }
