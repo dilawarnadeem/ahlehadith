@@ -14,7 +14,7 @@ export default function FlexiblePage({
 }: GenericPageProps) {
   if (!pageData) return <p>Page not found</p>;
   const flexibleBlocks = pageData?.flexiblePage?.flexiblePage || [];
-  console.log(flexibleBlocks);
+
   return (
     <>
       <SeoMeta
