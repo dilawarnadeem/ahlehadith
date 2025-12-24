@@ -275,3 +275,22 @@ export const singleArticle = gql`
     }
   }
 `;
+
+
+export const SearchPost = gql`
+  query PostsByScholar($search: String = "") {
+    posts(where: { search: $search }) {
+      nodes {
+        title
+        content
+        slug
+       
+        featuredImage {
+          node {
+            mediaItemUrl
+          }
+        }
+      }
+    }
+  }
+`;
