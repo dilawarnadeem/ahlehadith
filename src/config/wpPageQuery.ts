@@ -10,6 +10,11 @@ export const PAGE_QUERY = gql`
       date
       content
       databaseId
+      featuredImage {
+          node {
+            mediaItemUrl
+          }
+        }
       template {
         templateName
       }

@@ -15,6 +15,8 @@ export default function FlexiblePage({
   if (!pageData) return <p>Page not found</p>;
   const flexibleBlocks = pageData?.flexiblePage?.flexiblePage || [];
 
+  console.log("Flexible Blocks:", pageData);
+
   return (
     <>
       <SeoMeta
@@ -28,7 +30,7 @@ export default function FlexiblePage({
           title={pageData.title}
           subTitle=""
           image={
-            pageData.featuredImage?.node?.sourceUrl ||
+            pageData.featuredImage?.node?.mediaItemUrl ||
             defaultImage ||
             "/images/slid1.jpeg"
           }
@@ -59,7 +61,7 @@ export default function FlexiblePage({
                         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
                       >
                         {block.imageGallary?.map((img: any, i: number) => (
-                          <Image
+                          <img
                             key={i}
                             src={img.mediaItemUrl}
                             alt={`Gallery image ${i + 1}`}
