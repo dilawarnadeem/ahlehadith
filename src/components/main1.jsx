@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { SettingsContext } from '@/context/setting-context';
-import Slider from 'react-slick';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import React, { useContext, useEffect, useState } from "react";
+import { SettingsContext } from "@/context/setting-context";
+import Slider from "react-slick";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-const Main1 = () => {
+const Main1 = ({ data }) => {
   const { windowSize } = useContext(SettingsContext);
   const [post, setPost] = useState([]);
 
   useEffect(() => {
-    windowSize[0] <= 1080 ? setPost(Slide_BG) : setPost(Slide_BG);
+    windowSize[0] <= 1080 ? setPost(data) : setPost(data);
   }, []);
 
   const settings = {
@@ -25,10 +25,10 @@ const Main1 = () => {
     <section className="h-[580px] md:grid grid-cols-1 gap-2 md:mt-[90px] mt-[50px]">
       <div className="relative w-full">
         <Slider ref={slider} {...settings}>
-          {Slide_BG.map((item, idx) => {
+          {data.map((item, idx) => {
             return (
               <img
-                src={item.img}
+                src={item?.featuredImage?.node?.mediaItemUrl}
                 alt="img"
                 key={idx}
                 className="h-[580px] w-full object-cover"
@@ -54,27 +54,3 @@ const Main1 = () => {
 };
 
 export default Main1;
-
-export const Slide_BG = [
-  {
-    img: '/images/banner/01.jpeg',
-  },
-  {
-    img: '/images/banner/1.jpg',
-  },
-  {
-    img: '/images/banner/2.jpg',
-  },
-  {
-    img: '/images/banner/3.jpg',
-  },
-  {
-    img: '/images/banner/4.jpg',
-  },
-  {
-    img: '/images/banner/5.jpg',
-  },
-  {
-    img: '/images/banner/06.jpeg',
-  }
-];

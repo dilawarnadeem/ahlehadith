@@ -1,5 +1,19 @@
 import { gql } from "@apollo/client";
 
+export const HomeSlides = gql`
+  query HomeSlides {
+    slides {
+      nodes {
+        featuredImage {
+          node {
+            mediaItemUrl
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const AllPosts = gql`
   query ALLPOSTS {
     posts {
@@ -108,20 +122,20 @@ export const Books = gql`
 
 export const Articles = gql`
   query articles {
-  articles {
-    nodes {
-      slug
-      title
-      content
-      articleId
-      featuredImage {
-        node {
-          mediaItemUrl
+    articles {
+      nodes {
+        slug
+        title
+        content
+        articleId
+        featuredImage {
+          node {
+            mediaItemUrl
+          }
         }
       }
     }
   }
-}
 `;
 
 export const Members = gql`

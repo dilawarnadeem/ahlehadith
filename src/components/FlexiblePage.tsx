@@ -15,7 +15,7 @@ export default function FlexiblePage({
   if (!pageData) return <p>Page not found</p>;
   const flexibleBlocks = pageData?.flexiblePage?.flexiblePage || [];
 
-  console.log("Flexible Blocks:", pageData);
+  //console.log("Flexible Blocks:", pageData);
 
   return (
     <>

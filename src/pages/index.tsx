@@ -9,12 +9,13 @@ import { VideosGallery } from "../components/videos";
 import BooksSection from "../components/bookssection";
 import Team from "../components/team";
 import apolloClient from "../config/client";
-import { AllPosts, Books, Members, HomePage, Videos } from "@/config/queries";
+import { AllPosts, Books, Members, HomePage, Videos, HomeSlides } from "@/config/queries";
 import { GetServerSideProps } from "next";
 
 import SeoMeta from "@/components/seo";
 
 export default function Home({
+  Homeslides,
   postData,
   home,
   videosData,
@@ -34,7 +35,7 @@ export default function Home({
         description="مرکزی جمعیت اہل حدیث پاکستان اہل حدیث کی نمائندہ مذہبی و سیاسی جماعت ہے"
         url=""
       />
-      <Main1 />
+      <Main1 data={Homeslides} />
       <Sub_Nav />
       <Tabs intro={intro} />
       <section className="container px-4 md:px-10 mx-auto">
@@ -293,7 +294,8 @@ export default function Home({
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const [posts, homepage, videos, books, members] = await Promise.all([
+  const [slides,posts, homepage, videos, books, members] = await Promise.all([
+    apolloClient.query({ query: HomeSlides }),
     apolloClient.query({ query: AllPosts }),
     apolloClient.query({ query: HomePage }),
     apolloClient.query({ query: Videos }),
@@ -305,13 +307,15 @@ export const getServerSideProps: GetServerSideProps = async () => {
       },
     }),
   ]);
-  const postData = posts?.data?.posts?.nodes;
+  const Homeslides = slides?.data?.slides?.nodes;
+    const postData = posts?.data?.posts?.nodes;
   const home = homepage.data.page.home_info;
   const videosData = videos?.data?.videos?.nodes;
   const booksData = books?.data?.books?.edges;
   const membersData = members?.data?.members?.nodes;
   return {
     props: {
+      Homeslides,
       postData,
       home,
       videosData,
