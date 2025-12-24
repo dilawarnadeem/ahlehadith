@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react'
 import { BiPhoneCall } from 'react-icons/bi';
 import { BsPinMapFill, BsEnvelopeAtFill, BsPhone } from 'react-icons/bs';
-import { FaFacebookF, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaFacebookF, FaTiktok, FaYoutube } from 'react-icons/fa';
 import { TbLocationFilled } from 'react-icons/tb';
 import Layout from './layout';
 
@@ -22,7 +22,7 @@ const Footer = () => {
                   ٹیلی فون:
                 </h2>
                 <Link href="tel:03060483779" className="md:text-4xl text-2xl text-white uppercase font-ahle">
-                97 73 840 0306  92+
+                   97 73 840 0306  92+
                 </Link>
               </div>
             </div>
@@ -138,32 +138,32 @@ const Footer = () => {
         <div className='bg-[#012f1e]'>
           <Layout>
             <div className="py-6">
-              <div className='border border-yellow grid md:grid-cols-4 grid-cols-1 gap-5 items-center'>
-                <p className='text-white font-ahle text-base flex gap-2'>
+              <div className='border border-yellow grid md:grid-cols-4 grid-cols-1 gap-5 items-center '>
+                <p className='text-white font-ahle text-base flex gap-2 items-center'>
                   <BsPinMapFill size={20} />
-                  مرکز اہلحدیث، 106 راوی روڈ، لاہور، پاکستان
+                  <span className='inline-flex mb-2'>   مرکز اہلحدیث، 106 راوی روڈ، لاہور، پاکستان</span>
                 </p>
-                <Link href="mailto:mjah106@gmail.com" target='_blank' className='text-white font-ahle text-base flex gap-2'>
+                <Link href="mailto:mjah106@gmail.com" target='_blank' className='text-white font-ahle text-base flex gap-2 items-center'>
                   <BsEnvelopeAtFill size={20} />
-                  mjah106@gmail.com
+                   <span className='inline-flex mb-2'>  mjah106@gmail.com</span>
                 </Link>
-                <Link href="tel:+923060483779" className='text-white font-ahle text-base flex gap-2'>
+                <Link href="tel:+923060483779" className='text-white font-ahle text-base flex gap-2 items-center'>
                   <BsPhone size={20} />
-                  97 73 840 0306  92+
+                  <span className='inline-flex mb-2'>  97 73 840 0306  92+</span>
                 </Link>
                 <ul className="flex md:justify-end">
                   <li className='p-3 md:border-r md:border-y-0 md:border-l-0 border border-yellow bg-transparent hover:bg-yellow text-white'>
-                    <Link href="https://www.facebook.com/AllamaSajidMir" className="">
+                    <Link href="https://www.facebook.com/MjahOfficial" target='_blank' className="">
                       <FaFacebookF size={20} />
                     </Link>
                   </li>
                   <li className='p-3 md:border-r md:border-y-0 md:border-l-0 border border-yellow bg-transparent hover:bg-yellow text-white'>
-                    <Link href="#" className="">
-                      <FaTwitter size={20} />
+                    <Link href="https://www.tiktok.com/@mjah106" target='_blank' className="">
+                      <FaTiktok size={20} />
                     </Link>
                   </li>
                   <li className='p-3 md:border-r md:border-y-0 md:border-l-0 border border-yellow bg-transparent hover:bg-yellow text-white'>
-                    <Link href="#" className="">
+                    <Link href="https://www.youtube.com/@MarkaziJamiatAhleHadeesPakista" target='_blank' className="">
                       <FaYoutube size={20} />
                     </Link>
                   </li>
