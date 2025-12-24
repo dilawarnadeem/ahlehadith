@@ -18,8 +18,8 @@ export default function PostSlug({ post, posts }: any) {
     <>
       <PageBanner
         title={post?.title}
-        subTitle={post?.excerpt}
-        image={post?.featuredImage?.node?.mediaItemUrl}
+        subTitle=""
+        image="/images/banner1.jpg"
       />
       <section className='container px-4 md:px-10 mx-auto'>
         <div className="lg:flex gap-10 my-10">

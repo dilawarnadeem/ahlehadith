@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import Input from "@/components/input";
 import { FiCalendar } from 'react-icons/fi'
+import { ConvertDateIntoUrdu } from "@/utils";
 
 interface ISidebar {
   aboutAuthor: boolean;
@@ -154,8 +155,10 @@ const LatestPostSection = ({ posts }: any) => {
       <div className="mt-8 flex flex-col gap-4">
         {posts.slice(0, 5).map((p: any, idx: number) => {
           return (
-            <div className="flex gap-4 items-center group " key={idx}>
+            <div className="" key={idx}>
+              <Link href={`/blog/${p.databaseId}`} className="flex gap-4 items-center group ">
               <figure className="h-24 min-w-[6rem] overflow-hidden">
+                
                 <Image
                   src={p?.featuredImage?.node?.mediaItemUrl}
                   alt="feature"
@@ -168,8 +171,9 @@ const LatestPostSection = ({ posts }: any) => {
                 <h2 className="uppercase  text-sm text-pure cursor-pointer group-hover:underline">
                   {p.title}
                 </h2>
-                <span className="text-light-blue flex item-center gap-1 mt-2 text-sm"> <FiCalendar size={17} /> <span className="-mt-[2px]">22 DECEMBER</span></span>
+                <span className="text-light-blue flex item-center gap-1 mt-2 text-sm"> <FiCalendar size={17} /> <span className="-mt-[2px]"> {ConvertDateIntoUrdu(p.date)  }</span></span>
               </div>
+              </Link>
             </div>
           );
         })}

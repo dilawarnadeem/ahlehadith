@@ -30,7 +30,7 @@ const PageBanner = ({
         style={{ backgroundImage: `url(${image})` }}
       >
         <div className={` absolute top-0 p-4 flex flex-col justify-center text-white items-center right-0 bottom-0 left-0 bg-black/30 ${rounded && 'container px-4 md:px-10 mx-auto rounded-[60px]'}`}>
-          <h1 className="text-xl md:text-4xl pt-10 text-yellow font-bold font-ahle text-center capitalize max-w-[700px]">
+          <h1 className="text-xl md:text-3xl md:leading-[1.7] pt-10 text-yellow font-bold font-ahle text-center capitalize max-w-[700px]">
             {title}
           </h1>
           {subTitle && <div dangerouslySetInnerHTML={{__html:subTitle}} className="mt-7 text-lg font-ahle font-light max-w-[600px] text-center mb-5"/>}
