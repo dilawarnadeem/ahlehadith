@@ -97,7 +97,7 @@ const Footer = () => {
                 </h2>
                 <ul className="list-inside list-square marker:text-yellow">
                   <li className="mb-4 relative before:content-[' '] before:h-[1px] before:w-3 before:bg-[#397524] before:absolute before:top-[13px] before:right-1">
-                    <Link href="/" className="text-white hover:opacity-80 font-ahle text-lg ms-1">
+                    <Link href="/dastoor" className="text-white hover:opacity-80 font-ahle text-lg ms-1">
                       دستور مرکزی جمعیت اہل حدیث پاکستان
                     </Link>
                   </li>
@@ -121,7 +121,7 @@ const Footer = () => {
                 </h2>
                 <ul className='list-inside list-square marker:text-yellow'>
                 <li className="mb-4 relative before:content-[' '] before:h-[1px] before:w-3 before:bg-[#397524] before:absolute before:top-[13px] before:right-1">
-                    <Link href="islamic-graphics" className="text-white hover:opacity-80 font-ahle text-lg ms-1">اسلامک گرافکس</Link>
+                    <Link href="/islamic-graphics" className="text-white hover:opacity-80 font-ahle text-lg ms-1">اسلامک گرافکس</Link>
                   </li>
                   <li className="mb-4 relative before:content-[' '] before:h-[1px] before:w-3 before:bg-[#397524] before:absolute before:top-[13px] before:right-1">
                     <Link href="/books-library" className="text-white hover:opacity-80 font-ahle text-lg ms-1">کتب لائبریری</Link>
