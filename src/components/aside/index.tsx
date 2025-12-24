@@ -157,9 +157,8 @@ const LatestPostSection = ({ posts }: any) => {
           return (
             <div className="" key={idx}>
               <Link href={`/blog/${p.databaseId}`} className="flex gap-4 items-center group ">
-              <figure className="h-24 min-w-[6rem] overflow-hidden">
-                
-                <Image
+              <figure className="h-24 min-w-[6rem] overflow-hidden">                
+                <img
                   src={p?.featuredImage?.node?.mediaItemUrl}
                   alt="feature"
                   width={150}
