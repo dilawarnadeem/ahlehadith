@@ -50,7 +50,7 @@ export default function Home({
               {posts?.slice(0, 1).map((item: any, idx: number) => {
                 return (
                   <div key={idx} className="relative h-[540px] w-full bg-black">
-                    <Link href={`/blogs/${item.databaseId}`}>
+                    <Link href={`/blog/${item.databaseId}`}>
                       <img
                         src={item?.featuredImage?.node?.mediaItemUrl}
                         alt="thumbnil"
@@ -67,7 +67,7 @@ export default function Home({
                     </span>
                     <div className="absolute bottom-0 md:p-5 p-2 bg-white w-full border-t-4 border-yellow">
                       <Link
-                        href={`/blogs/${item.databaseId}`}
+                        href={`/blog/${item.databaseId}`}
                         className="text-2xl font-ahle text-black"
                       >
                         {item?.title}
@@ -85,7 +85,7 @@ export default function Home({
                     className={`group overflow-hidden bg-light-gray shadow-lg md:flex`}
                   >
                     <Link
-                      href={`/blogs/${item?.databaseId}`}
+                      href={`/blog/${item?.databaseId}`}
                       className={`md:w-1/3`}
                     >
                       <figure
@@ -109,7 +109,7 @@ export default function Home({
                           <span> - </span>
                           <span>By {item?.author?.node?.name}</span>
                         </p>
-                        <Link href={`/blogs/${item?.databaseId}`}>
+                        <Link href={`/blog/${item?.databaseId}`}>
                           <h2
                             className={`text-[18px] mt-2 leading-[2.3rem] font-medium font-ahle `}
                           >

@@ -284,7 +284,7 @@ export const SearchPost = gql`
         title
         content
         slug
-       
+        databaseId       
         featuredImage {
           node {
             mediaItemUrl

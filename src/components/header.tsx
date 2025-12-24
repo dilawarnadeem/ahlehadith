@@ -221,7 +221,8 @@ export const Header = () => {
 };
 
 const SearchBox = () => {
-  const { searchValue, setSearchValue, setSearchOpen } = useContext(SettingsContext);
+  const { searchValue, setSearchValue, setSearchOpen } =
+    useContext(SettingsContext);
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -249,9 +250,11 @@ const SearchBox = () => {
             onClick={() => setSearchOpen(false)}
           />
         </button>
-        <button  type="submit" className="bg-yellow w-12 h-12 mr-3 group rounded-full flex justify-center items-center flex-col">
+        <button
+          type="submit"
+          className="bg-yellow w-12 h-12 mr-3 group rounded-full flex justify-center items-center flex-col"
+        >
           <BiSearch
-
             size={24}
             className="mx-5 mt-1 text-black group-hover:scale-110 cursor-pointer"
           />

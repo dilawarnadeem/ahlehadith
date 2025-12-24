@@ -32,7 +32,7 @@ export default function PostSlug({ post, posts }: any) {
             </div>
             <h2 className="text-xl md:text-2xl capitalize mt-2 font-ahle font-bold">{post?.title}</h2>
             <figure className="relative">
-              <Image
+              <img
                 src={post?.featuredImage?.node?.mediaItemUrl}
                 alt="featuredImage"
                 width={850}
@@ -42,14 +42,6 @@ export default function PostSlug({ post, posts }: any) {
             </figure>
             <div className="mt-8 text-text leading-8 tracking-wide" dangerouslySetInnerHTML={{ __html: post?.content }} />
 
-            <SideBarHeading long={true} className="mt-20"> Related Post </SideBarHeading>
-            <div className="grid gap-6 md:grid-cols-3 my-10">
-              {/* {posts?.slice(0, 3).map((post:any, idx:number) => {
-                return (
-                  <PostDesign post={post} idx={idx} layout={3} key={idx} />
-                );
-              })} */}
-            </div>
 
 
           </section>

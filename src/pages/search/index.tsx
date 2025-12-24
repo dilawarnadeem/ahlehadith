@@ -28,7 +28,7 @@ const Search = ({ allPosts }: any) => {
           {allPosts.length > 0 ? (
             allPosts?.map((item: any, idx: number) => (
               <div key={idx} className="relative h-[540px] w-full bg-black">
-                <Link href={`/blogs/${item.databaseId}`}>
+                <Link href={`/blog/${item.databaseId}`}>
                   <img
                     src={item?.featuredImage?.node?.mediaItemUrl}
                     alt="thumbnil"
@@ -45,7 +45,7 @@ const Search = ({ allPosts }: any) => {
                 </span>
                 <div className="absolute bottom-0 md:p-5 p-2 bg-white w-full border-t-4 border-yellow">
                   <Link
-                    href={`/blogs/${item.databaseId}`}
+                    href={`/blog/${item.databaseId}`}
                     className="text-2xl font-ahle text-black"
                   >
                     {item?.title}
