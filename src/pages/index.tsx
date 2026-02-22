@@ -106,8 +106,7 @@ export default function Home({
                           <span className="uppercase">
                             {ConvertDateIntoUrdu(item.date)}
                           </span>
-                          <span> - </span>
-                          <span>By {item?.author?.node?.name}</span>
+                          
                         </p>
                         <Link href={`/blog/${item?.databaseId}`}>
                           <h2

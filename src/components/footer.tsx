@@ -200,7 +200,7 @@ const Footer = () => {
                 className="text-white font-ahle text-base flex gap-2 items-center"
               >
                 <BsPhone size={20} />
-                <span className="inline-flex mb-2"> 97 73 840 0306 92+</span>
+                <span className="inline-flex mb-2"> +92 307 0483779</span>
               </Link>
               <ul className="flex md:justify-end">
                 <li className="p-3 md:border-r md:border-y-0 md:border-l-0 border border-yellow bg-transparent hover:bg-yellow text-white">
